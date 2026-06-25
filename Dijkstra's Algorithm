@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main()
+{
+    int cost[3][3];
+    int dist[3];
+    int i,j,start;
+
+    printf("Enter cost matrix:\n");
+
+    for(i=0;i<3;i++)
+        for(j=0;j<3;j++)
+            scanf("%d",&cost[i][j]);
+
+    printf("Enter source vertex: ");
+    scanf("%d",&start);
+
+    for(i=0;i<3;i++)
+        dist[i]=cost[start][i];
+
+    printf("Shortest Distances:\n");
+
+    for(i=0;i<3;i++)
+        printf("To %d = %d\n",i,dist[i]);
+
+    return 0;
+}
