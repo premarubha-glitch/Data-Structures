@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *left, *right;
+};
+
+struct node* createNode(int data)
+{
+    struct node *newnode;
+    newnode = (struct node*)malloc(sizeof(struct node));
+
+    newnode->data = data;
+    newnode->left = newnode->right = NULL;
+
+    return newnode;
+}
+
+void postorder(struct node *root)
+{
+    if(root != NULL)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
+int main()
+{
+    int root,left,right;
+
+    printf("Enter root node: ");
+    scanf("%d",&root);
+
+    printf("Enter left child: ");
+    scanf("%d",&left);
+
+    printf("Enter right child: ");
+    scanf("%d",&right);
+
+    struct node *r=createNode(root);
+    r->left=createNode(left);
+    r->right=createNode(right);
+
+    printf("Postorder Traversal: ");
+    postorder(r);
+
+    return 0;
+}
